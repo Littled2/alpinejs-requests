@@ -1,0 +1,20 @@
+<!DOCTYPE html>
+
+<html>
+  <head>
+    <script defer src="https://cdn.jsdelivr.net/npm/alpinejs@3.x.x/dist/cdn.min.js"></script>
+  </head>
+  <body>
+
+    <form x-data="{ message: '' }">
+      <input type="text" x-model="message" />
+
+      <button
+        x-post="{ route: '/endpoint', body: { message } }"  
+      >
+        Submit
+      </button>
+    </form>
+    
+  </body>
+</html>
