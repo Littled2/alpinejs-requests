@@ -16,13 +16,12 @@ const Plugin = function (Alpine) {
     // Regiter all the aliases
     methods.forEach((type) => {
         Alpine.directive(type.directive, (el, { expression }, { evaluate, cleanup }) => {
-            let data = evalExpression(expression, evaluate);
-
+            
             el.addEventListener('click', () => {
                 processRequest({
                     el,
                     method: type.method,
-                    ...data
+                    ...evalExpression(expression, evaluate)
                 });
             })
             cleanup(() => observer.disconnect())
